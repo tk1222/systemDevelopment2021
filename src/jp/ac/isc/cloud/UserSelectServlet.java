@@ -29,8 +29,7 @@ public class UserSelectServlet extends HttpServlet {
 				// MySQL用のJDBCドライバーのクラスをロードする
 				Class.forName("com.mysql.jdbc.Driver");
 				// SQLサーバーへの接続に関するインスタンスを取得する
-				users = DriverManager.getConnection("jdbc:mysql://localhost/servlet_db",
-						"root","");
+				users = DriverManager.getConnection("jdbc:mysql://localhost/servlet_db","root","");
 				//レコードを管理する配列用意
 				ArrayList<Member> list = new ArrayList<Member>();
 				//SQLを実行するためのクラスを用意
@@ -49,8 +48,7 @@ public class UserSelectServlet extends HttpServlet {
 				state.close(); //SQLを送信したStatementを閉じる
 				users.close(); //DB接続を閉じる
 				request.setAttribute("list",list);
-				RequestDispatcher rd =
-						getServletContext().getRequestDispatcher("/WEB-INF/select.jsp");
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/select.jsp");
 				rd.forward(request,response);
 				//クラスが存在しなかったらエラーを表示
 			}catch(ClassNotFoundException e) {
